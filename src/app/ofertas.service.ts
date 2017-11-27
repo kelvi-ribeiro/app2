@@ -60,8 +60,13 @@ export class OfertasService{
     public getOfertas2():Promise<Oferta[]>{
         return new Promise((resolve,reject)=>{
             //Algum tipo de processamento, que ao finalizar, chama a função resolve ou a função reject
-            
+            let deu_certo = false
+            if(deu_certo){
             resolve(this.ofertas)
+            }
+            else{
+                reject({codigo_error:404,mensagem_erro:'Not found'})
+            }
         })
 
     }
