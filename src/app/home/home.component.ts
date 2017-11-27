@@ -17,8 +17,13 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.ofertas = this.ofertasService.getOfertas()
-    console.log(this.ofertas)
+    //this.ofertas = this.ofertasService.getOfertas()
+    //console.log(this.ofertas)
+
+    this.ofertasService.getOfertas2()
+    .then((ofertas:Oferta[])=>{
+      this.ofertas = ofertas
+    })
   }
 
 }
