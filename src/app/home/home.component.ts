@@ -22,9 +22,15 @@ export class HomeComponent implements OnInit {
 
     this.ofertasService.getOfertas2()
     .then(
-      (ofertas:Oferta[])=>{ this.ofertas = ofertas },
-      (param:any) =>{console.log(param)}
-    )
+      (ofertas:Oferta[])=>{
+
+        console.log('A função resolve() foi resolvida depois de 3 segundos')
+        this.ofertas = ofertas
+      
+      })
+
+    .catch((param:any) =>{
+      console.log(param)})
   }
 
 }
