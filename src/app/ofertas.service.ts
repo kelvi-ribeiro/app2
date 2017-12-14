@@ -27,8 +27,8 @@ export class OfertasService {
         return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
         .toPromise()
         .then(( resposta: any) => {
-            console.log(resposta.json().shift()) //Método que pega o primeiro valor do array
-            return resposta.json()
+           
+            return resposta.json().shift()
         })
     }
 
