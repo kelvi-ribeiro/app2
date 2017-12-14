@@ -12,6 +12,9 @@ export class OfertaComponent implements OnInit {
 
   ngOnInit() {
     console.log('ID RECUPERADO DA ROTA:',this.route.snapshot.params['id'])
+   // this.route.params.subscribe((parametro:any)=>{ Recurso de Subscribe
+     /// console.log(parametro.id)  Recurso de Subscribe
+   // })
   }
 
 }
