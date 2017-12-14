@@ -23,7 +23,15 @@ export class OfertasService {
         .then((resposta:any) => resposta.json())
 
     }
-}
+    public getOfertaPorId(id:number):Promise<Oferta>{
+        return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+        .toPromise()
+        .then(( resposta: any) => {
+            console.log(resposta.json().shift()) //Método que pega o primeiro valor do array
+            return resposta.json()
+        })
+    }
+
 //     public getOfertas2(): Promise<Oferta[]> {
 //         return new Promise((resolve, reject) => {
 //             //algum tipo de processamento, que ao finalizar, chama a função resolve ou a função reject
