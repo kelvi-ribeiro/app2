@@ -34,7 +34,7 @@ export class OfertasService {
             return resposta.json().shift()
         })
     }
-    public getComoUsarOfertaOfertaPorId(id:number):Promise<string>{
+    public getComoUsarOfertaPorId(id:number):Promise<string>{
         return this.http.get(`${URL_API}/como-usar?id=${id}`)
         .toPromise()
         .then((resposta:any)=>{
