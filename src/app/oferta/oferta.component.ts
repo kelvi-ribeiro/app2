@@ -24,6 +24,12 @@ export class OfertaComponent implements OnInit {
    // this.route.params.subscribe((parametro:any)=>{ Recurso de Subscribe
      /// console.log(parametro.id)  Recurso de Subscribe
    // })
+
+  //  this.route.params.subscribe((parametro:any)=>{console.log(parametro)},
+  //   (erro:any)=>console.log(erro),
+  //   () => console.log('Processamento foi classificado como concluído!')
+  
+  //   )
   }
 
 }
