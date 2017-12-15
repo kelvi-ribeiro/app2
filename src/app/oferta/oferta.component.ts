@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {Oferta} from '../shared/oferta.model'
 import {OfertasService} from '../ofertas.service'
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 @Component({
   selector: 'app-oferta',
   templateUrl: './oferta.component.html',
@@ -21,6 +23,15 @@ export class OfertaComponent implements OnInit {
        this.oferta = oferta
        //console.log(this.oferta)
      })
+
+
+     let tempo = Observable.interval(1000)
+
+     tempo.subscribe((intervalo:number)=>{
+       console.log(intervalo)
+     })
+
+
    // this.route.params.subscribe((parametro:any)=>{ Recurso de Subscribe
      /// console.log(parametro.id)  Recurso de Subscribe
    // })
@@ -30,6 +41,9 @@ export class OfertaComponent implements OnInit {
   //   () => console.log('Processamento foi classificado como concluído!')
   
   //   )
+
+
   }
+
 
 }
