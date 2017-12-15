@@ -31,6 +31,7 @@ export class OfertasService {
             return resposta.json().shift()
         })
     }
+}
 
 //     public getOfertas2(): Promise<Oferta[]> {
 //         return new Promise((resolve, reject) => {
