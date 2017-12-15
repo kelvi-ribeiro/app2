@@ -4,6 +4,7 @@ import {Oferta} from '../shared/oferta.model'
 import {OfertasService} from '../ofertas.service'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { Observer } from 'rxjs/Observer';
 @Component({
   selector: 'app-oferta',
   templateUrl: './oferta.component.html',
@@ -25,11 +26,31 @@ export class OfertaComponent implements OnInit {
      })
 
 
-     let tempo = Observable.interval(1000)
+     //observable (observável)
 
-     tempo.subscribe((intervalo:number)=>{
-       console.log(intervalo)
+     let meuObservableTeste = Observable.create((observer:Observer<string>)=>{
+       observer.next('Primeiro evento da stream')
+       observer.next('Segundo evento da stream')
+
+
      })
+
+
+     //obersavable (observador)
+
+     meuObservableTeste.subscribe(
+       (resultado:any)=> console.log(resultado)
+
+     )
+
+    }
+
+
+    //  let tempo = Observable.interval(1000)
+
+    //  tempo.subscribe((intervalo:number)=>{
+    //    console.log(intervalo)
+    //  })
 
 
    // this.route.params.subscribe((parametro:any)=>{ Recurso de Subscribe
@@ -43,7 +64,7 @@ export class OfertaComponent implements OnInit {
   //   )
 
 
-  }
+  
 
 
 }
