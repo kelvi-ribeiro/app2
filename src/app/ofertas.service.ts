@@ -1,10 +1,13 @@
 import {Http} from '@angular/http'
 import {Injectable} from '@angular/core'
 import { Oferta } from './shared/oferta.model'
+import {URL_API} from './app.api'
 import 'rxjs/add/operator/toPromise'
 
 @Injectable()
 export class OfertasService {
+    
+    //private url_api='http://localhost:3000/ofertas' OUTRO JEITO DE FAZER A URL, LOCALMENTE
     constructor(private http:Http){
 
     }
@@ -12,19 +15,19 @@ export class OfertasService {
    
     public getOfertas(): Promise<Oferta[]> {
         //efetuar uma requisição http
-       return this.http.get('http://localhost:3000/ofertas?destaque=true')
+       return this.http.get(`${URL_API}?destaque=true`)
         .toPromise()
         .then((resposta:any)=>resposta.json())
         //retornar um promise Oferta[]
     }
     public getOfertasPorCategoria(categoria:string):Promise<Oferta[]>{
-        return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+        return this.http.get(`${URL_API}?categoria=${categoria}`)
         .toPromise()
         .then((resposta:any) => resposta.json())
 
     }
     public getOfertaPorId(id:number):Promise<Oferta>{
-        return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+        return this.http.get(`${URL_API}?id=${id}`)
         .toPromise()
         .then(( resposta: any) => {
            
