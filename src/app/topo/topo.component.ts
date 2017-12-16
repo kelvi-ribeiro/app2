@@ -22,7 +22,8 @@ export class TopoComponent implements OnInit {
     this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca)
     this.ofertas.subscribe(
     (ofertas:Oferta[])=>console.log(ofertas),
-    (erro:any)=>console.log('erro de status:',erro.status)
+    (erro:any)=>console.log('erro de status:',erro.status),
+    ()=> console.log ('Fluxo de eventos completo!')
     )
   }
 
