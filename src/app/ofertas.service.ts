@@ -1,4 +1,4 @@
-import {Http} from '@angular/http'
+import {Http,Response} from '@angular/http'
 import {Injectable} from '@angular/core'
 import {Observable} from  'rxjs/Observable'
 import { Oferta } from './shared/oferta.model'
@@ -20,19 +20,19 @@ export class OfertasService {
         //efetuar uma requisição http
        return this.http.get(`${URL_API}/ofertas?destaque=true`)
         .toPromise()
-        .then((resposta:any)=>resposta.json())
+        .then((resposta:Response)=>resposta.json())
         //retornar um promise Oferta[]
     }
     public getOfertasPorCategoria(categoria:string):Promise<Oferta[]>{
         return this.http.get(`${URL_API}/ofertas?categoria=${categoria}`)
         .toPromise()
-        .then((resposta:any) => resposta.json())
+        .then((resposta:Response) => resposta.json())
 
     }
     public getOfertaPorId(id:number):Promise<Oferta>{
         return this.http.get(`${URL_API}/ofertas?id=${id}`)
         .toPromise()
-        .then(( resposta: any) => {
+        .then(( resposta: Response) => {
            
             return resposta.json().shift()
         })
@@ -40,7 +40,7 @@ export class OfertasService {
     public getComoUsarOfertaPorId(id:number):Promise<string>{
         return this.http.get(`${URL_API}/como-usar?id=${id}`)
         .toPromise()
-        .then((resposta:any)=>{
+        .then((resposta:Response)=>{
             
             return resposta.json()[0].descricao
         })
@@ -48,14 +48,14 @@ export class OfertasService {
     public getOndeFicaOfertaPorId(id:number):Promise<string>{
         return this.http.get(`${URL_API}/onde-fica?id=${id}`)
         .toPromise()
-        .then((resposta:any)=>{
+        .then((resposta:Response)=>{
             return resposta.json()[0].descricao
         })
     }
     public pesquisaOfertas(termo:string):Observable<Oferta[]>{
         return this.http.get(`${URL_API}/ofertas?descricao_oferta_like=${termo}`)
         .retry(10)
-        .map((resposta:any)=>resposta.json())
+        .map((resposta:Response)=>resposta.json())
     }
 }
 
