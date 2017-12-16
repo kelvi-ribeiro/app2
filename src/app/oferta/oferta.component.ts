@@ -1,17 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {Oferta} from '../shared/oferta.model'
 import {OfertasService} from '../ofertas.service'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
+import {Subscription} from 'rxjs/Subscription'
 @Component({
   selector: 'app-oferta',
   templateUrl: './oferta.component.html',
   styleUrls: ['./oferta.component.css'],
   providers:[OfertasService]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
+
+  private tempoObservableSubscription:Subscription
+  private meuObservableTesteSubscription:Subscription
+
+
   public oferta:Oferta
   
 
@@ -24,6 +30,12 @@ export class OfertaComponent implements OnInit {
        this.oferta = oferta
        //console.log(this.oferta)
      })
+
+     let tempo = Observable.interval(1000)
+     
+          this.tempoObservableSubscription = tempo.subscribe((intervalo:number)=>{
+            console.log(intervalo)
+          })
 
 
      //observable (observável)
@@ -40,7 +52,7 @@ export class OfertaComponent implements OnInit {
 
      //obersavable (observador)
 
-     meuObservableTeste.subscribe(
+     this.meuObservableTesteSubscription = meuObservableTeste.subscribe(
        (resultado:any)=> console.log(resultado),
        (erro:string)=> console.log(erro),
        () => console.log('Stream de eventos foi finalizada')
@@ -49,12 +61,13 @@ export class OfertaComponent implements OnInit {
 
     }
 
+  ngOnDestroy(){
+    this.meuObservableTesteSubscription.unsubscribe()
+    this.tempoObservableSubscription.unsubscribe()
+  }
 
-    //  let tempo = Observable.interval(1000)
 
-    //  tempo.subscribe((intervalo:number)=>{
-    //    console.log(intervalo)
-    //  })
+   
 
 
    // this.route.params.subscribe((parametro:any)=>{ Recurso de Subscribe
