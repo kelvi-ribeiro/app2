@@ -17,8 +17,9 @@ import 'rxjs/add/observable/of'
 })
 export class TopoComponent implements OnInit {
 
-
+  private temValorPesquisa:boolean = false
   public ofertas:Observable<Oferta[]>
+  private ofertasRetornadas:Oferta[]
   private subjectPesquisa:Subject<string> = new Subject<string>()
 
   constructor(private ofertasService:OfertasService) { }
@@ -26,7 +27,7 @@ export class TopoComponent implements OnInit {
   ngOnInit() {
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
     .debounceTime(1000) // Executa a ação do switchmap após um segundo
-    .distinctUntilChanged()
+    .distinctUntilChanged() // para fazer pesquisas distintas
     .switchMap((termo:string) => {
       console.log('requisição http para a api: ' , termo)
 
@@ -44,7 +45,11 @@ export class TopoComponent implements OnInit {
       })
 
     this.ofertas.subscribe((ofertas:Oferta[])=>{
-      console.log(ofertas)
+      this.ofertasRetornadas = ofertas
+      
+      if(this.ofertasRetornadas.length==0){
+        this.temValorPesquisa = true
+      }
     })
   }
 
