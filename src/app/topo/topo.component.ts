@@ -6,6 +6,7 @@ import { Subject } from 'rxjs/Subject';
 
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/debounceTime'
+import 'rxjs/add/operator/distinctUntilChanged'
 import 'rxjs/add/observable/of'
 @Component({
   selector: 'app-topo',
@@ -24,6 +25,7 @@ export class TopoComponent implements OnInit {
   ngOnInit() {
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
     .debounceTime(1000) // Executa a ação do switchmap após um segundo
+    .distinctUntilChanged()
     .switchMap((termo:string) => {
       console.log('requisição http para a api: ' , termo)
 
