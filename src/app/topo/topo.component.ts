@@ -14,7 +14,7 @@ import '../util/rxjs-extensions'
 })
 export class TopoComponent implements OnInit {
 
-  private temValorPesquisa:boolean = false
+  
   public ofertas:Observable<Oferta[]>
  
   private subjectPesquisa:Subject<string> = new Subject<string>()
@@ -30,7 +30,7 @@ export class TopoComponent implements OnInit {
 
       if(termo.trim() ===''){
         //retornar um observable de array de ofertas vazio
-        this.temValorPesquisa = true
+        
         return Observable.of<Oferta[]>([])
       }
       return this.ofertasService.pesquisaOfertas(termo)
@@ -47,10 +47,13 @@ export class TopoComponent implements OnInit {
   }
 
   public pesquisa(termoDaBusca:string):void{
-    console.log('keyup caracter: ' , termoDaBusca)
-    
+       
     this.subjectPesquisa.next(termoDaBusca)
     
+  }
+
+  public limpaPesquisa():void{
+    this.subjectPesquisa.next('')
   }
 
 }
