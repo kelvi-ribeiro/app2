@@ -1,6 +1,6 @@
 import {Pedido} from './shared/pedido.model'
 export class OrdemCompraService{
-    public efetivarCompra(peido:Pedido):void{
-        console.log("chegamos até aqui!")
+    public efetivarCompra(pedido:Pedido):void{
+        console.log(pedido)
     }
 }
