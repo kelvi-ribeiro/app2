@@ -1,8 +1,7 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import {NgForm} from '@angular/forms'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms'
 import { OrdemCompraService } from '../ordem-compra.service'
 import { Pedido } from '../shared/pedido.model'
-
 
 @Component({
   selector: 'app-ordem-compra',
@@ -12,23 +11,27 @@ import { Pedido } from '../shared/pedido.model'
 })
 export class OrdemCompraComponent implements OnInit {
 
-  @ViewChild('formulario')
-  public formulario : NgForm
+  @ViewChild('formulario') public f: NgForm
+
+  public idPedidoCompra: number
+
   constructor(private ordemCompraService: OrdemCompraService) { }
 
   ngOnInit() {
     
   }
-  public confirmarCompra():void{
-    let pedido:Pedido = new Pedido(
-      this.formulario.value.endereco,
-      this.formulario.value.numero,
-      this.formulario.value.complemento,
-      this.formulario.value.formaPagamento
+
+  public confirmarCompra(): void {
+    let pedido: Pedido = new Pedido(
+      this.f.value.endereco,
+      this.f.value.numero,
+      this.f.value.complemento,
+      this.f.value.formaPagamento
     )
+
     this.ordemCompraService.efetivarCompra(pedido)
-    .subscribe((idPedido:number)=>{
-      console.log('Pedido cadastrado com sucesso! ID DO PEDIDO:' + idPedido)
-    })
+      .subscribe((idPedido: number) => {
+        this.idPedidoCompra = idPedido
+      })
   }
 }

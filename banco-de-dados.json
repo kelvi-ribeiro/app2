@@ -255,6 +255,13 @@
       "complemento": "",
       "formaPagamento": "dinheiro",
       "id": 10
+    },
+    {
+      "endereco": "Kelvi",
+      "numero": "123",
+      "complemento": "sub",
+      "formaPagamento": "dinheiro",
+      "id": 11
     }
   ]
 }
