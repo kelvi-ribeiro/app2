@@ -248,6 +248,13 @@
       "complemento": "",
       "formaPagamento": "dinheiro",
       "id": 9
+    },
+    {
+      "endereco": "Rua dos marujos",
+      "numero": "178",
+      "complemento": "",
+      "formaPagamento": "dinheiro",
+      "id": 10
     }
   ]
 }
