@@ -76,7 +76,9 @@
             autocomplete="off" 
             formControlName="endereco"
           >
-          <small class="form-text text-success">Ok</small>
+          <small *ngIf="formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-success">Ok</small>
+          <small *ngIf="!formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-danger">Endereço Inválido</small>
+          
         </div>
 
         <div class="form-group col-md-2">
@@ -87,7 +89,8 @@
             formControlName="numero" 
             autocomplete="off"
           >
-          <small class="form-text text-success">Ok</small>
+          <small *ngIf="formulario.get('numero').valid && formulario.get('numero').touched" class="form-text text-success">Ok</small>
+          <small *ngIf="!formulario.get('numero').valid && formulario.get('numero').touched" class="form-text text-danger">Número Inválido</small>
         </div>
 
         <div class="form-group col-md-4">
@@ -97,7 +100,10 @@
             placeholder="Complemento" 
             autocomplete="off"
             formControlName="complemento"
+            
           >
+          
+          
         </div>
 
       </div>
@@ -112,12 +118,15 @@
           <select 
             class="form-control"
             formControlName="formaPagamento"
+            
           >
+          
             <option value="">Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Débito</option>
           </select>
-          <small class="form-text text-success">Ok</small>
+          <small *ngIf="formulario.get('formaPagamento').valid && formulario.get('formaPagamento').touched" class="form-text text-success">Ok</small>
+          <small *ngIf="!formulario.get('formaPagamento').valid && formulario.get('formaPagamento').touched" class="form-text text-danger">Forma de pagamento Inválido</small>
         </div>
       </div>
 
