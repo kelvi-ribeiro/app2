@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdemCompraService } from '../ordem-compra.service'
 import { Pedido } from '../shared/pedido.model'
-import { FormGroup,FormControl } from '@angular/forms'
+import { FormGroup,FormControl ,Validators } from '@angular/forms'
+
 
 
 @Component({
@@ -13,10 +14,12 @@ import { FormGroup,FormControl } from '@angular/forms'
 export class OrdemCompraComponent implements OnInit {
 
   public formulario:FormGroup = new FormGroup({
-    'endereco': new FormControl(null),
-    'numero': new FormControl(null),
+    'endereco': new FormControl(
+      null,[Validators.required,Validators.minLength(3),Validators.maxLength(120)]),
+    'numero': new FormControl(
+      null,[Validators.required,Validators.minLength(1),Validators.maxLength(20)]),
     'complemento': new FormControl(null),
-    'formaPagamento': new FormControl(null)
+    'formaPagamento': new FormControl(null, [Validators.required])
   })
 
   constructor(private ordemCompraService: OrdemCompraService) { }
