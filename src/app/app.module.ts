@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router'
-import {FormsModule} from '@angular/forms'
+//import {FormsModule} from '@angular/forms' USO COM TEMPLATE FORMS
+import {ReactiveFormsModule} from '@angular/forms'
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
@@ -46,7 +47,8 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
+    ReactiveFormsModule,
+    //FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' } ],
