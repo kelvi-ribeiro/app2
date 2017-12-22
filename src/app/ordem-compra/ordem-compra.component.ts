@@ -12,7 +12,7 @@ import { FormGroup,FormControl ,Validators } from '@angular/forms'
   providers: [ OrdemCompraService ]
 })
 export class OrdemCompraComponent implements OnInit {
-
+  public idPedidoCompra:number
   public formulario:FormGroup = new FormGroup({
     'endereco': new FormControl(
       null,[Validators.required,Validators.minLength(3),Validators.maxLength(120)]),
@@ -36,7 +36,18 @@ export class OrdemCompraComponent implements OnInit {
       this.formulario.get('formaPagamento').markAsTouched()
       
     }else{
-      console.log('formulário está valido')
+      let pedido:Pedido = new Pedido(
+        this.formulario.value.endereco,
+        this.formulario.value.numero,
+        this.formulario.value.complemento,
+        this.formulario.value.formaPagamento
+      )
+     this.ordemCompraService.efetivarCompra(pedido)
+     .subscribe((idPedido:number)=>{
+       this.idPedidoCompra = idPedido
+       console.log(this.idPedidoCompra)
+
+     })
     }
   }
 }
