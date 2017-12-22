@@ -17,10 +17,11 @@
             oferta.valor,
             1
         )
+        this.itens.push(itemCarrinho)
         console.log(itemCarrinho)
 
     }
    
  }
 
- export default CarrinhoService
+ export  {CarrinhoService}
