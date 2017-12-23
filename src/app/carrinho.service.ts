@@ -17,9 +17,13 @@
             oferta.valor,
             1
         )
-        this.itens.push(itemCarrinho)
-        console.log(itemCarrinho)
-
+        //Verificar se o item em questão já não existe dentro de this.itens
+        let itemCarrinhoEncontrado = this.itens.find((item:ItemCarrinho)=> item.id === itemCarrinho.id)
+        if(itemCarrinhoEncontrado){
+        itemCarrinhoEncontrado.quantidade +=1
+        }else{
+            this.itens.push(itemCarrinho)
+        }
     }
    
  }
