@@ -19,9 +19,9 @@
         <div>
           <div class="row">
             <div class="col">
-              <button type="button" class="btn btn-link">-</button>
+              <button  type="button" class="btn btn-link">-</button>
               {{itemCarrinho.quantidade}}
-              <button type="button" class="btn btn-link">+</button>
+              <button (click)="adicionar(itemCarrinho)" type="button" class="btn btn-link">+</button>
             </div>
           </div>
         </div>
