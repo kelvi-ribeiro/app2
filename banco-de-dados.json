@@ -319,6 +319,44 @@
         }
       ],
       "id": 16
+    },
+    {
+      "endereco": "123",
+      "numero": "123",
+      "complemento": "123",
+      "formaPagamento": "dinheiro",
+      "itens": [
+        {
+          "id": 1,
+          "img": {
+            "url": "/assets/ofertas/1/img1.jpg"
+          },
+          "titulo": "Super Burger",
+          "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
+          "valor": 29.9,
+          "quantidade": 4
+        }
+      ],
+      "id": 17
+    },
+    {
+      "endereco": "123",
+      "numero": "123",
+      "complemento": "123",
+      "formaPagamento": "dinheiro",
+      "itens": [
+        {
+          "id": 4,
+          "img": {
+            "url": "/assets/ofertas/4/img1.jpg"
+          },
+          "titulo": "Estância das águas",
+          "descricao_oferta": "Diversão garantida com piscinas, trilhas e muito mais.",
+          "valor": 31.9,
+          "quantidade": 4
+        }
+      ],
+      "id": 18
     }
   ]
 }
