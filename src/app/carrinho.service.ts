@@ -42,8 +42,20 @@
             itemCarrinhoEncontrado.quantidade += 1
         
     }
+   
 
    
+ }
+ public diminuirQuantidade(itemCarrinho:ItemCarrinho):void{
+    console.log(itemCarrinho)
+    //decrementar  quantidade
+    let itemCarrinhoEncontrado = 
+    this.itens.find((item:ItemCarrinho)=>item.id === itemCarrinho.id)
+    if(itemCarrinhoEncontrado.quantidade>1)
+    if(itemCarrinhoEncontrado){
+        itemCarrinhoEncontrado.quantidade -= 1
+    
+}
  }
 }
 
